@@ -38,6 +38,21 @@ def like_post(request):
         post.save()
         return redirect('/')
 
+@login_required(login_url='signin')
+def profile(request,pk):
+    user_object = User.objects.get(username=pk)
+    user_profile = Profile.objects.get(user = user_object)
+    user_post = Post.objects.get(user=pk)
+    user_post_length = len(user_post)
+    context = {
+        'user_object':user_object,
+        'user_profile':user_profile,
+        'user_post':user_post,
+        'user_post_length':user_post_length,
+
+    }
+    return render(request, 'profile.html',context)
+
 # It ensures that only logged-in users can access the view, and if an unauthenticated user tries to access the view, they are redirected to the specified login URL.
 @login_required(login_url='signin')
 def settings(request):
