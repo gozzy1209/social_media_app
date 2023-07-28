@@ -1,7 +1,7 @@
 # tests/test_models.py
 import pytest
 from django.contrib.auth import get_user_model
-from myapp.models import Profile, Post, LikePost, FollowersCount
+from .models import LikePost, Post, Profile,FollowersCount
 from datetime import datetime
 
 User = get_user_model()
