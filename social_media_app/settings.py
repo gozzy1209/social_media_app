@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'core'
+    'core',
+    "social_media_app"
 ]
 
 MIDDLEWARE = [
@@ -80,11 +81,24 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'socialapp',
         'USER': 'root',
-        'PASSWORD': '20000131',
+        'PASSWORD': '123456',
         'HOST': 'localhost',    # Usually 'localhost' for local development
         'PORT': '3306',    # Usually '3306' for MySQL
-    }
+    }，
+    'test': {
+         'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'socialapptest',
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',    # Usually 'localhost' for local development
+        'PORT': '3306',    # Usually '3306' for MySQL
+    },
 }
+
+# settings.py
+if 'test' in sys.argv:
+    DATABASES['default'] = DATABASES['test']
+
 
 
 
